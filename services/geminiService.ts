@@ -3,7 +3,7 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { ReceiptItem } from "../types";
 
 export const processReceiptImage = async (base64Image: string): Promise<ReceiptItem[]> => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY });  //  process.env.API_KEY
   
   const prompt = "Проаналізуй цей чек. Витягни всі позиції товарів, їх кількість та ціну за одиницю. Назви товарів залишай мовою оригіналу, як вони написані в чеку (не перекладай їх). Ігноруй податки та знижки, якщо вони вказані окремими рядками, тільки основні товари. Поверни результат у форматі JSON.";
 
